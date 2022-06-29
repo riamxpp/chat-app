@@ -1,11 +1,15 @@
-import { Button } from "@mui/material";
-import React from "react";
+import { Button, ThemeProvider } from "@mui/material";
+import { LightTheme } from "./themes";
 
 function App() {
   return (
-    <div className="App">
-      <Button>Button</Button>
-    </div>
+    <ThemeProvider theme={LightTheme}>
+      <div className="App">
+        <Button variant="contained" color="primary">
+          Button
+        </Button>
+      </div>
+    </ThemeProvider>
   );
 }
 
