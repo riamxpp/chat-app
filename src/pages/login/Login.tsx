@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const auth = getAuth();
+  const user = auth.currentUser;
   const navigate = useNavigate();
   const [authing, setAuthing] = useState(false);
   const provider = new GoogleAuthProvider();
@@ -12,12 +13,12 @@ const Login = () => {
   const signInWithGoogle = async () => {
     setAuthing(true);
     signInWithPopup(auth, provider)
-      .then((response) => {
-        console.log(response);
+      .then((result) => {
+        // console.log("result: ", result.user.uid);
+        // const token = result
         navigate("/home");
       })
       .catch((error) => {
-        console.log(error);
         setAuthing(false);
       });
   };
@@ -25,9 +26,14 @@ const Login = () => {
   return (
     <Box>
       <p>Login page </p>
-      <button onClick={() => signInWithGoogle()} disabled={authing}>
+      <Button
+        variant="contained"
+        size="small"
+        onClick={() => signInWithGoogle()}
+        disabled={authing}
+      >
         Login
-      </button>
+      </Button>
     </Box>
   );
 };

@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, deleteUser, signOut } from "firebase/auth";
+import { Box, Button } from "@mui/material";
+import SideBar from "./sideBar/SideBar";
+import Message from "./message/Message";
 
 const Home = () => {
   const [logout, setLogout] = useState(false);
   const auth = getAuth();
-  console.log(auth);
 
   const logoutWithGoogle = () => {
     setLogout(true);
     signOut(auth)
       .then((resolver) => {
         setLogout(true);
-        console.log("resolver: ", resolver);
       })
       .catch((error) => {
         setLogout(false);
@@ -20,12 +21,13 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <p>Home</p>
-      <button onClick={() => logoutWithGoogle()} disabled={logout}>
+    <Box display="flex">
+      <SideBar></SideBar>
+      <Message></Message>
+      {/* <Button onClick={() => logoutWithGoogle()} disabled={logout}>
         Sign out
-      </button>
-    </div>
+      </Button> */}
+    </Box>
   );
 };
 
