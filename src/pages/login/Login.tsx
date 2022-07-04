@@ -7,12 +7,13 @@ const Login = () => {
   const auth = getAuth();
   const navigate = useNavigate();
   const [authing, setAuthing] = useState(false);
+  const provider = new GoogleAuthProvider();
 
   const signInWithGoogle = async () => {
     setAuthing(true);
-    signInWithPopup(auth, new GoogleAuthProvider())
+    signInWithPopup(auth, provider)
       .then((response) => {
-        console.log(response.user.uid);
+        console.log(response);
         navigate("/home");
       })
       .catch((error) => {
