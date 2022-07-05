@@ -27,6 +27,7 @@ const Login = () => {
     <Box>
       <p>Login page </p>
       <Button
+        color="secondary"
         variant="contained"
         size="small"
         onClick={() => signInWithGoogle()}

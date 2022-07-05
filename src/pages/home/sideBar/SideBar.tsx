@@ -1,20 +1,18 @@
-import { Box, CardHeader, Icon, List, ListItem, Toolbar } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
+import SideBarHeader from "./sideBarHeader/SideBarHeader";
+import Chats from "./chats/Chats";
 
-const SideBar = () => {
-  const teste = ["teste 1", "teste 2", "teste 3"];
+interface ISideBar {
+  userChat: any;
+  setUserChat: any;
+}
+
+const SideBar = (props: ISideBar) => {
   return (
     <Box width="500px">
-      <CardHeader>
-        <Icon></Icon>
-      </CardHeader>
-      <Toolbar>
-        <List>
-          {teste.map((item) => (
-            <ListItem key="item">{item}</ListItem>
-          ))}
-        </List>
-      </Toolbar>
+      <SideBarHeader></SideBarHeader>
+      <Chats></Chats>
     </Box>
   );
 };

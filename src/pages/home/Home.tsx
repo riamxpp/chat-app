@@ -5,6 +5,7 @@ import SideBar from "./sideBar/SideBar";
 import Message from "./message/Message";
 
 const Home = () => {
+  const [userChat, setUserChat] = useState(null);
   const [logout, setLogout] = useState(false);
   const auth = getAuth();
 
@@ -21,8 +22,8 @@ const Home = () => {
   };
 
   return (
-    <Box display="flex">
-      <SideBar></SideBar>
+    <Box display="flex" width="100vw" color="primary">
+      <SideBar userChat={userChat} setUserChat={setUserChat}></SideBar>
       <Message></Message>
       {/* <Button onClick={() => logoutWithGoogle()} disabled={logout}>
         Sign out
