@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Login from "./pages/login/Login";
 import "./App.css";
 import { initializeApp } from "firebase/app";
@@ -6,15 +6,16 @@ import { config } from "./config";
 import { Route, Routes } from "react-router-dom";
 import AuthRoutes from "./pages/AuthRoutes";
 import Home from "./pages/home/Home";
-import { ThemeProvider, makeStyles } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import { LightTheme } from "./themes/LightTheme";
 import { currentTheme } from "./themes";
+import { ChatContext } from "./context/ChatContext";
 
 initializeApp(config.firebaseConfig);
 
 function App() {
-  const [themeName, setThemeName] = useState("light");
   const [curentThemePage, setCurentThemePage] = useState(LightTheme);
+  const { themeName, setThemeName } = useContext(ChatContext);
 
   useEffect(() => {
     setCurentThemePage(currentTheme(themeName));

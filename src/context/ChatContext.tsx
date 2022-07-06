@@ -1,8 +1,16 @@
 import React, { createContext, useState } from "react";
-import { ChatContextType } from "./@types/IChat";
+import { IChatContext, IInitialValuesChat } from "./@types/IChat";
 
-export const ChatContext = createContext<ChatContextType | null>(null);
+export const ChatContext = createContext<IChatContext>(
+  {} as IInitialValuesChat
+);
 
 export const ChatProvider: React.FC<any> = ({ children }) => {
-  return <ChatContext.Provider value={{}}>{children}</ChatContext.Provider>;
+  const [themeName, setThemeName] = useState<"light" | "dark">("dark");
+
+  return (
+    <ChatContext.Provider value={{ themeName, setThemeName }}>
+      {children}
+    </ChatContext.Provider>
+  );
 };
