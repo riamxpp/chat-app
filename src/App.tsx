@@ -12,37 +12,29 @@ import { currentTheme } from "./themes";
 
 initializeApp(config.firebaseConfig);
 
-const useStyles = makeStyles({
-  root: () => {},
-});
-
-let curentThemePage = LightTheme;
-
 function App() {
   const [themeName, setThemeName] = useState("light");
-  const classes = useStyles;
+  const [curentThemePage, setCurentThemePage] = useState(LightTheme);
 
   useEffect(() => {
-    currentTheme(themeName);
+    setCurentThemePage(currentTheme(themeName));
   }, [themeName]);
 
   return (
     <>
       <ThemeProvider theme={curentThemePage}>
-        <div className={classes}>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Login />} />
-            <Route
-              path="/home"
-              element={
-                <AuthRoutes>
-                  <Home />
-                </AuthRoutes>
-              }
-            />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
+          <Route
+            path="/home"
+            element={
+              <AuthRoutes>
+                <Home />
+              </AuthRoutes>
+            }
+          />
+        </Routes>
       </ThemeProvider>
     </>
   );
