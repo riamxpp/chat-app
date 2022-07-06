@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import Login from "./pages/login/Login";
 import "./App.css";
 import { initializeApp } from "firebase/app";
@@ -6,24 +6,14 @@ import { config } from "./config";
 import { Route, Routes } from "react-router-dom";
 import AuthRoutes from "./pages/AuthRoutes";
 import Home from "./pages/home/Home";
-import { ThemeProvider } from "@mui/material";
-import { LightTheme } from "./themes/LightTheme";
-import { currentTheme } from "./themes";
-import { ChatContext } from "./context/ChatContext";
+import { ChaStorage } from "./context/ChatContext";
 
 initializeApp(config.firebaseConfig);
 
 function App() {
-  const [curentThemePage, setCurentThemePage] = useState(LightTheme);
-  const { themeName, setThemeName } = useContext(ChatContext);
-
-  useEffect(() => {
-    setCurentThemePage(currentTheme(themeName));
-  }, [themeName]);
-
   return (
     <>
-      <ThemeProvider theme={curentThemePage}>
+      <ChaStorage>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Login />} />
@@ -36,7 +26,7 @@ function App() {
             }
           />
         </Routes>
-      </ThemeProvider>
+      </ChaStorage>
     </>
   );
 }
