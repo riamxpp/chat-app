@@ -1,6 +1,9 @@
 import { createTheme } from "@mui/material";
 
 export const DarkTheme = createTheme({
+  typography: {
+    fontFamily: "Arial",
+  },
   palette: {
     mode: "dark",
     primary: {

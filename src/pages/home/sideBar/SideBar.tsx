@@ -10,7 +10,7 @@ interface ISideBar {
 
 const SideBar = (props: ISideBar) => {
   return (
-    <Box width="400px">
+    <Box width="350px">
       <SideBarHeader></SideBarHeader>
       <Chats></Chats>
     </Box>
