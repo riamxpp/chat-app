@@ -7,7 +7,7 @@ function Chats() {
     <Toolbar>
       <List>
         {teste.map((item) => (
-          <ListItem key="item">{item}</ListItem>
+          <ListItem key={item}>{item}</ListItem>
         ))}
       </List>
     </Toolbar>
