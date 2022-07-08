@@ -8,7 +8,7 @@ import Teste from "../../../../teste.jpg";
 const SideBarHeader = () => {
   return (
     <Box
-      bgcolor="primary.main"
+      bgcolor="secondary.main"
       component="header"
       display="flex"
       sx={{

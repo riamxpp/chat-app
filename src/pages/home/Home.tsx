@@ -22,7 +22,7 @@ const Home = () => {
   };
 
   return (
-    <Box display="flex" width="100vw" color="primary" component="section">
+    <Box display="flex" width="100vw" height="100vh" component="section">
       <SideBar userChat={userChat} setUserChat={setUserChat}></SideBar>
       <Message></Message>
       {/* <Button onClick={() => logoutWithGoogle()} disabled={logout}>

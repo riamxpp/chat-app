@@ -5,7 +5,10 @@ import TesteFoto from "../../../../teste.jpg";
 function Chats() {
   const teste = ["teste 1", "teste 2", "teste 3"];
   return (
-    <Box bgcolor="secondary.main" sx={{ padding: "0 10px", width: "100%" }}>
+    <Box
+      bgcolor="primary.main"
+      sx={{ padding: "0 10px", width: "100%", height: "100%" }}
+    >
       <List>
         <Divider />
         {teste.map((item) => (
