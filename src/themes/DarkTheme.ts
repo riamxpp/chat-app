@@ -11,6 +11,7 @@ export const DarkTheme = createTheme({
     },
     secondary: {
       main: "#2A3942",
+      contrastText: "#F0F2F5",
     },
   },
 });

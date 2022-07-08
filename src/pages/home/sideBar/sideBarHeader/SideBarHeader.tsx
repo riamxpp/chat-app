@@ -8,6 +8,7 @@ import Teste from "../../../../teste.jpg";
 const SideBarHeader = () => {
   return (
     <Box
+      bgcolor="primary.main"
       component="header"
       display="flex"
       sx={{
@@ -19,8 +20,17 @@ const SideBarHeader = () => {
       }}
     >
       <Box>
-        <Box sx={{ width: "50px" }}>
-          <img style={{ width: "100%" }} src={Teste} alt="Foto do perfil" />
+        <Box
+          sx={{
+            width: "50px",
+            height: "50px",
+            backgroundImage: `url(${Teste})`,
+            backgroundSize: "cover",
+            backgroundPosition: "50% 50%",
+            borderRadius: "50%",
+          }}
+        >
+          {/* <img style={{ width: "100%" }} src={Teste} alt="Foto do perfil" /> */}
         </Box>
       </Box>
       <Box display="flex" sx={{ flexDirection: "row", gap: "1rem" }}>

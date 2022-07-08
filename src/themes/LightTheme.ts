@@ -11,6 +11,7 @@ export const LightTheme = createTheme({
     },
     secondary: {
       main: "#F0F2F5",
+      contrastText: "#2A3942",
     },
   },
 });
