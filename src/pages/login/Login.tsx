@@ -7,17 +7,14 @@ import { ChatContext } from "../../context/ChatContext";
 const Login = () => {
   const { changeTheme, themeName } = useContext(ChatContext);
   const auth = getAuth();
-  // const user = auth.currentUser;
   const navigate = useNavigate();
   const [authing, setAuthing] = useState(false);
   const provider = new GoogleAuthProvider();
-  console.log("login: ", themeName);
+
   const signInWithGoogle = async () => {
     setAuthing(true);
     signInWithPopup(auth, provider)
       .then((result) => {
-        // console.log("result: ", result.user.uid);
-        // const token = result
         navigate("/home");
       })
       .catch((error) => {

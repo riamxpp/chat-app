@@ -1,11 +1,16 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CropFreeIcon from "@mui/icons-material/CropFree";
-import Teste from "../../../../teste.jpg";
+import { ChatContext } from "../../../../context/ChatContext";
 
 const SideBarHeader = () => {
+  const { userLogged } = useContext(ChatContext);
+
+  console.log(userLogged.photoURL);
+
+  if (!userLogged) return <div>ERROR</div>;
   return (
     <Box
       bgcolor="secondary.main"
@@ -24,14 +29,12 @@ const SideBarHeader = () => {
           sx={{
             width: "50px",
             height: "50px",
-            backgroundImage: `url(${Teste})`,
+            backgroundImage: `url("${userLogged.photoURL}")`,
             backgroundSize: "cover",
             backgroundPosition: "50% 50%",
             borderRadius: "50%",
           }}
-        >
-          {/* <img style={{ width: "100%" }} src={Teste} alt="Foto do perfil" /> */}
-        </Box>
+        ></Box>
       </Box>
       <Box display="flex" sx={{ flexDirection: "row", gap: "1rem" }}>
         <Box

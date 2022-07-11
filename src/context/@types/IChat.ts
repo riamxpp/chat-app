@@ -1,18 +1,18 @@
-import { User } from "firebase/auth";
+import { User } from "../../@types/User";
 import { SetStateAction } from "react";
 
 export interface IChatContext {
   themeName: "light" | "dark";
   setThemeName: React.Dispatch<SetStateAction<"light" | "dark">>;
   changeTheme: () => void;
-  user: User;
-  setUser: React.Dispatch<SetStateAction<User>>;
+  userLogged: User;
+  setUserLogged: React.Dispatch<SetStateAction<User>>;
 }
 
-export interface IInitialValuesChat {
-  themeName: "light";
-  setThemeName: () => {};
-  changeTheme: () => {};
-  user: User;
-  setUser: () => {};
-}
+export const IInitialValuesChat: IChatContext = {
+  themeName: "light",
+  setThemeName: () => {},
+  changeTheme: () => {},
+  userLogged: { id: "", name: "", photoURL: "" },
+  setUserLogged: () => {},
+};

@@ -1,17 +1,25 @@
 import { ThemeProvider } from "@mui/material";
-import { User } from "firebase/auth";
 import React, { createContext, useState } from "react";
 import { DarkTheme } from "../themes/DarkTheme";
 import { LightTheme } from "../themes/LightTheme";
 import { IChatContext, IInitialValuesChat } from "./@types/IChat";
 
-export const ChatContext = createContext<IChatContext>(
-  {} as IInitialValuesChat
-);
+// const initialValues: IInitialValuesChat = {
+//   themeName: "light",
+//   setThemeName: () => {},
+//   changeTheme: () => {},
+//   user: { id },
+// };
+
+export const ChatContext = createContext<IChatContext>(IInitialValuesChat);
 
 export const ChaStorage: React.FC<any> = ({ children }) => {
   const [themeName, setThemeName] = useState<"light" | "dark">("light");
-  const [user, setUser] = useState({} as User);
+  const [userLogged, setUserLogged] = useState({
+    id: "",
+    name: "",
+    photoURL: "",
+  });
 
   function changeTheme() {
     themeName === "dark" ? setThemeName("light") : setThemeName("dark");
@@ -19,7 +27,13 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
 
   return (
     <ChatContext.Provider
-      value={{ themeName, setThemeName, changeTheme, user, setUser }}
+      value={{
+        themeName,
+        setThemeName,
+        changeTheme,
+        userLogged,
+        setUserLogged,
+      }}
     >
       <ThemeProvider theme={themeName === "light" ? LightTheme : DarkTheme}>
         {children}

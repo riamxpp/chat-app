@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { Box } from "@mui/material";
 import SideBar from "./sideBar/SideBar";
 import Message from "./message/Message";
+import { ChatContext } from "../../context/ChatContext";
 
 const Home = () => {
   const [userChat, setUserChat] = useState(null);
   const [logout, setLogout] = useState(false);
   const auth = getAuth();
-  const user = {};
-  onAuthStateChanged(auth, (user) => {
-    if (user) console.log(user.photoURL);
-  });
+  const { setUserLogged, userLogged } = useContext(ChatContext);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        if (user.uid && user.displayName && user.photoURL) {
+          setUserLogged({
+            id: user.uid,
+            name: user.displayName,
+            photoURL: user.photoURL,
+          });
+        }
+      } else {
+        console.log("Faça login");
+      }
+    });
+  }, [auth]);
 
   // const logoutWithGoogle = () => {
   //   setLogout(true);
