@@ -16,7 +16,7 @@ const ChatMessage = () => {
       display="flex"
       sx={{ flexDirection: "column", justifyContent: "space-between" }}
     >
-      <Box height="90%" width="100%" bgcolor="primary.main"></Box>
+      <Box height="90%" width="100%" bgcolor="primary.dark"></Box>
       <Box
         height="10%"
         width="100%"
