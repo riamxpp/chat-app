@@ -22,7 +22,7 @@ const ChatMessage = () => {
         width="100%"
         display="flex"
         sx={{ padding: "10px", alignItems: "center", justifyContent: "center" }}
-        bgcolor="secondary.dark"
+        bgcolor="secondary.main"
       >
         <Box
           width="10%"
@@ -46,7 +46,7 @@ const ChatMessage = () => {
             sx={{
               padding: ".3rem .5rem",
               borderRadius: "4px",
-              backgroundColor: "secondary.light",
+              backgroundColor: "secondary.dark",
             }}
             value={message}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>

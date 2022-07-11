@@ -38,19 +38,19 @@ const SideBarHeader = () => {
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          <MessageIcon />
+          <MessageIcon sx={{ color: "secondary.contrastText" }} />
         </Box>
         <Box
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          <CropFreeIcon />
+          <CropFreeIcon sx={{ color: "secondary.contrastText" }} />
         </Box>
         <Box
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          <MoreVertIcon />
+          <MoreVertIcon sx={{ color: "secondary.contrastText" }} />
         </Box>
       </Box>
     </Box>
