@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Box, Button, Input, TextField } from "@mui/material";
+import React, { useState, ChangeEvent } from "react";
+import { Box, Button, Input } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import MicIcon from "@mui/icons-material/Mic";
+import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 const ChatMessage = () => {
-  const [menssage, setMessage] = useState("");
+  const [message, setMessage] = useState("");
 
   return (
     <Box
@@ -14,15 +16,29 @@ const ChatMessage = () => {
       display="flex"
       sx={{ flexDirection: "column", justifyContent: "space-between" }}
     >
-      <Box height="89%" width="100%"></Box>
+      <Box height="90%" width="100%" bgcolor="primary.main"></Box>
       <Box
         height="10%"
         width="100%"
         display="flex"
-        sx={{ padding: "10px", alignItens: "center", justifyContent: "center" }}
-        bgcolor="secondary.main"
+        sx={{ padding: "10px", alignItems: "center", justifyContent: "center" }}
+        bgcolor="secondary.dark"
       >
-        <Box width="80%" height="100%">
+        <Box
+          width="10%"
+          display="flex"
+          sx={{ alignItens: "center", justifyContent: "space-evenly" }}
+        >
+          <EmojiEmotionsIcon
+            fontSize="medium"
+            sx={{ color: "secondary.contrastText" }}
+          />
+          <AttachFileIcon
+            fontSize="medium"
+            sx={{ color: "secondary.contrastText" }}
+          />
+        </Box>
+        <Box width="82%" height="100%">
           <Input
             placeholder="Mensagem"
             disableUnderline={true}
@@ -32,10 +48,18 @@ const ChatMessage = () => {
               borderRadius: "4px",
               backgroundColor: "secondary.light",
             }}
+            value={message}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              setMessage(event.target.value)
+            }
           ></Input>
         </Box>
         <Button>
-          <SendIcon />
+          {message ? (
+            <SendIcon sx={{ color: "secondary.contrastText" }} />
+          ) : (
+            <MicIcon sx={{ color: "secondary.contrastText" }} />
+          )}
         </Button>
       </Box>
     </Box>

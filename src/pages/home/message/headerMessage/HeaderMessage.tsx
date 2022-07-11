@@ -9,7 +9,7 @@ const HeaderMessage = () => {
       display="flex"
       width="100%"
       sx={{ padding: "10px" }}
-      bgcolor="secondary.main"
+      bgcolor="secondary.dark"
     >
       <Box
         width="50px"
