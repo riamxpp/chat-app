@@ -10,7 +10,7 @@ interface ISideBar {
 
 const SideBar = (props: ISideBar) => {
   return (
-    <Box width="350px">
+    <Box width="30%" sx={{ flexShrink: "0" }}>
       <SideBarHeader></SideBarHeader>
       <Chats></Chats>
     </Box>

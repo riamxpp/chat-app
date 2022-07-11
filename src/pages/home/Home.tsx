@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { getAuth, deleteUser, signOut } from "firebase/auth";
-import { Box, Button } from "@mui/material";
+import { getAuth, signOut } from "firebase/auth";
+import { Box } from "@mui/material";
 import SideBar from "./sideBar/SideBar";
 import Message from "./message/Message";
 
@@ -22,7 +22,13 @@ const Home = () => {
   };
 
   return (
-    <Box display="flex" width="100vw" height="100vh" component="section">
+    <Box
+      display="flex"
+      width="100%"
+      height="99.7vh"
+      component="section"
+      sx={{ flexShrink: "0" }}
+    >
       <SideBar userChat={userChat} setUserChat={setUserChat}></SideBar>
       <Message></Message>
       {/* <Button onClick={() => logoutWithGoogle()} disabled={logout}>

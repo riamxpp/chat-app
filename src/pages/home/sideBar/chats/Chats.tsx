@@ -7,7 +7,7 @@ function Chats() {
   return (
     <Box
       bgcolor="primary.main"
-      sx={{ padding: "0 10px", width: "100%", height: "100%" }}
+      sx={{ padding: "0 10px", width: "100%", height: "89%" }}
     >
       <List>
         <Divider />

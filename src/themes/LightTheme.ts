@@ -8,8 +8,10 @@ export const LightTheme = createTheme({
     mode: "light",
     primary: {
       main: "#FFFFFF",
+      dark: "#efeae2",
     },
     secondary: {
+      light: "#FFFFFF",
       main: "#F0F2F5",
       contrastText: "#2A3942",
     },
