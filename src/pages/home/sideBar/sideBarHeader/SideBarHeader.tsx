@@ -1,15 +1,16 @@
-import { Box, Button } from "@mui/material";
-import React, { useContext } from "react";
+import { Avatar, Box, Button } from "@mui/material";
+import React, { useContext, useState } from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CropFreeIcon from "@mui/icons-material/CropFree";
 import { ChatContext } from "../../../../context/ChatContext";
 import * as EmailValidator from "email-validator";
-// import { database } from "../../../../App";
 import { getDatabase, ref, set } from "firebase/database";
+import ModalSideBarHeader from "./ModalSideBarHeader";
 
 const SideBarHeader = () => {
   const { userLogged } = useContext(ChatContext);
+  const [showModal, setShowModal] = useState(false);
   const database = getDatabase();
 
   const startNewConversation = () => {
@@ -45,16 +46,7 @@ const SideBarHeader = () => {
       }}
     >
       <Box>
-        <Box
-          sx={{
-            width: "47px",
-            height: "47px",
-            backgroundImage: `url("${userLogged.photoURL}")`,
-            backgroundSize: "cover",
-            backgroundPosition: "50% 50%",
-            borderRadius: "50%",
-          }}
-        ></Box>
+        <Avatar alt="Your picture profile" src={userLogged.photoURL} />
       </Box>
       <Box display="flex" sx={{ flexDirection: "row", gap: "1rem" }}>
         <Box
@@ -80,6 +72,7 @@ const SideBarHeader = () => {
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
+          {showModal ? <ModalSideBarHeader /> : ""}
           <Button size="small" sx={{ minWidth: "auto" }}>
             <MoreVertIcon sx={{ color: "secondary.contrastText" }} />
           </Button>

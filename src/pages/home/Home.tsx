@@ -4,16 +4,11 @@ import { Box } from "@mui/material";
 import SideBar from "./sideBar/SideBar";
 import Message from "./message/Message";
 import { ChatContext } from "../../context/ChatContext";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
-import { db } from "../../App";
 
 const Home = () => {
   const [userChat, setUserChat] = useState(null);
-  const [logout, setLogout] = useState(false);
   const auth = getAuth();
-  const { setUserLogged, userLogged } = useContext(ChatContext);
-
-  // const makeUser = doc(db, "chat-app-12-07-2022/3242423");
+  const { setUserLogged } = useContext(ChatContext);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -29,22 +24,8 @@ const Home = () => {
       } else {
         alert("Faça login");
       }
-
-      // async function saveDate() {
-      //   try {
-      //     const docRef = await addDoc(collection(db, "users"), {
-      //       id: userLogged.id,
-      //       chats: [],
-      //     });
-      //     setDoc(makeUser, docRef);
-      //   } catch (e) {
-      //     console.log(e);
-      //   }
-      // }
-      // console.log("a");
-      // saveDate();
     });
-  }, []);
+  }, [auth, setUserLogged]);
 
   return (
     <Box
@@ -56,9 +37,6 @@ const Home = () => {
     >
       <SideBar userChat={userChat} setUserChat={setUserChat}></SideBar>
       <Message></Message>
-      {/* <Button onClick={() => logoutWithGoogle()} disabled={logout}>
-        Sign out
-      </Button> */}
     </Box>
   );
 };

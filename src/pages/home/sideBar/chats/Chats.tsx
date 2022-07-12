@@ -1,4 +1,12 @@
-import { Box, Divider, List, ListItem } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Divider,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+} from "@mui/material";
 import React from "react";
 import TesteFoto from "../../../../teste.jpg";
 
@@ -20,44 +28,21 @@ function Chats() {
               display="flex"
               sx={{ gap: "1rem" }}
             >
-              <Box
-                width="56px"
-                display="flex"
+              <ListItemAvatar
                 sx={{
-                  height: "45px",
-                  justifyContent: "center",
+                  display: "flex",
                   alignItems: "center",
-                  borderRadius: "50%",
-                  overflow: "hidden",
-                  backgroundImage: `url(${TesteFoto})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "50% 50%",
-                }}
-              ></Box>
-              <Box
-                width="100%"
-                display="flex"
-                sx={{
-                  flexDirection: "column",
-                  justifyContent: "space-between",
+                  justifyContent: "center",
                 }}
               >
-                <Box
-                  component="span"
-                  fontSize="small"
-                  color="secondary.contrastText"
-                >
-                  User name
-                </Box>
-                <Box
-                  component="p"
-                  fontSize="small"
-                  color="secondary.contrastText"
-                >
-                  Last message
-                </Box>
-                <Divider />
-              </Box>
+                <Avatar alt="Profile Picture" src={TesteFoto} />
+              </ListItemAvatar>
+              <ListItemText
+                primary="User Name"
+                secondary="Last Message"
+                sx={{ color: "secondary.contrastText" }}
+              />
+              <Divider />
             </Box>
           </ListItem>
         ))}
