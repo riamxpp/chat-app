@@ -6,11 +6,9 @@ import CropFreeIcon from "@mui/icons-material/CropFree";
 import { ChatContext } from "../../../../context/ChatContext";
 import * as EmailValidator from "email-validator";
 import { getDatabase, ref, set } from "firebase/database";
-import ModalSideBarHeader from "./ModalSideBarHeader";
 
 const SideBarHeader = () => {
   const { userLogged } = useContext(ChatContext);
-  const [showModal, setShowModal] = useState(false);
   const database = getDatabase();
 
   const startNewConversation = () => {
@@ -72,7 +70,6 @@ const SideBarHeader = () => {
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          {showModal ? <ModalSideBarHeader /> : ""}
           <Button size="small" sx={{ minWidth: "auto" }}>
             <MoreVertIcon sx={{ color: "secondary.contrastText" }} />
           </Button>

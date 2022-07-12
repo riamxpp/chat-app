@@ -4,11 +4,13 @@ import { Box } from "@mui/material";
 import SideBar from "./sideBar/SideBar";
 import Message from "./message/Message";
 import { ChatContext } from "../../context/ChatContext";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [userChat, setUserChat] = useState(null);
   const auth = getAuth();
   const { setUserLogged } = useContext(ChatContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -22,10 +24,10 @@ const Home = () => {
           });
         }
       } else {
-        alert("Faça login");
+        navigate("/home");
       }
     });
-  }, [auth, setUserLogged]);
+  }, [auth, setUserLogged, navigate]);
 
   return (
     <Box

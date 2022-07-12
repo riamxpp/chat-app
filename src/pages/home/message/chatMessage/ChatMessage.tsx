@@ -12,7 +12,7 @@ const ChatMessage = () => {
     <Box
       component="section"
       width="100%"
-      height="89%"
+      height="89.9%"
       display="flex"
       sx={{ flexDirection: "column", justifyContent: "space-between" }}
     >
