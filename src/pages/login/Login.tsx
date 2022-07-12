@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ChatContext } from "../../context/ChatContext";
 
 const Login = () => {
-  const { changeTheme, themeName } = useContext(ChatContext);
+  const { changeTheme } = useContext(ChatContext);
   const auth = getAuth();
   const navigate = useNavigate();
   const [authing, setAuthing] = useState(false);
@@ -23,8 +23,17 @@ const Login = () => {
   };
 
   return (
-    <Box sx={{ background: "primary.main" }}>
-      <p>Login page </p>
+    <Box
+      width="100vw"
+      height="100vh"
+      display="flex"
+      sx={{
+        backgroundColor: "primary.main",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "1rem",
+      }}
+    >
       <Button
         color="secondary"
         variant="contained"

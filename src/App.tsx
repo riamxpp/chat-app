@@ -7,8 +7,10 @@ import { Route, Routes } from "react-router-dom";
 import AuthRoutes from "./pages/AuthRoutes";
 import Home from "./pages/home/Home";
 import { ChaStorage } from "./context/ChatContext";
+import { getFirestore } from "firebase/firestore";
 
-initializeApp(config.firebaseConfig);
+export const index = initializeApp(config.firebaseConfig);
+export const db = getFirestore();
 
 function App() {
   return (

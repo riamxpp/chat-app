@@ -13,6 +13,6 @@ export const IInitialValuesChat: IChatContext = {
   themeName: "light",
   setThemeName: () => {},
   changeTheme: () => {},
-  userLogged: { id: "", name: "", photoURL: "" },
+  userLogged: { id: "", name: "", photoURL: "", email: "" },
   setUserLogged: () => {},
 };

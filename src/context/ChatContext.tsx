@@ -4,13 +4,6 @@ import { DarkTheme } from "../themes/DarkTheme";
 import { LightTheme } from "../themes/LightTheme";
 import { IChatContext, IInitialValuesChat } from "./@types/IChat";
 
-// const initialValues: IInitialValuesChat = {
-//   themeName: "light",
-//   setThemeName: () => {},
-//   changeTheme: () => {},
-//   user: { id },
-// };
-
 export const ChatContext = createContext<IChatContext>(IInitialValuesChat);
 
 export const ChaStorage: React.FC<any> = ({ children }) => {
@@ -19,6 +12,7 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
     id: "",
     name: "",
     photoURL: "",
+    email: "",
   });
 
   function changeTheme() {

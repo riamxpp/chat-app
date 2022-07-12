@@ -4,10 +4,11 @@ import TesteFoto from "../../../../teste.jpg";
 
 function Chats() {
   const teste = ["teste 1", "teste 2", "teste 3"];
+
   return (
     <Box
       bgcolor="primary.main"
-      sx={{ padding: "0 10px", width: "100%", height: "89%" }}
+      sx={{ padding: "0 10px", width: "100%", height: "89.9%" }}
     >
       <List>
         <Divider />
@@ -20,10 +21,10 @@ function Chats() {
               sx={{ gap: "1rem" }}
             >
               <Box
-                width="63px"
+                width="56px"
                 display="flex"
                 sx={{
-                  height: "50px",
+                  height: "45px",
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: "50%",

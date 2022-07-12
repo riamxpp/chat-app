@@ -1,14 +1,34 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React, { useContext } from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CropFreeIcon from "@mui/icons-material/CropFree";
 import { ChatContext } from "../../../../context/ChatContext";
+import * as EmailValidator from "email-validator";
+// import { database } from "../../../../App";
+import { getDatabase, ref, set } from "firebase/database";
 
 const SideBarHeader = () => {
   const { userLogged } = useContext(ChatContext);
+  const database = getDatabase();
 
-  console.log(userLogged.photoURL);
+  const startNewConversation = () => {
+    const emailPrompt = prompt("Insira o endereço de email!");
+    if (!emailPrompt) {
+      alert("Email inválido");
+    } else {
+      if (!EmailValidator.validate(emailPrompt)) {
+        alert("Email inválido");
+      } else if (emailPrompt === userLogged.email) {
+        alert("Insira um email diferente do seu!");
+      } else {
+        alert("Email válido!");
+        set(ref(database, "users/" + userLogged.id), {
+          users: [userLogged.email, emailPrompt],
+        });
+      }
+    }
+  };
 
   if (!userLogged) return <div>ERROR</div>;
   return (
@@ -18,7 +38,7 @@ const SideBarHeader = () => {
       display="flex"
       sx={{
         width: "100%",
-        height: "65 px",
+        height: "65px",
         justifyContent: "space-between",
         alignItems: "center",
         padding: "10px",
@@ -27,8 +47,8 @@ const SideBarHeader = () => {
       <Box>
         <Box
           sx={{
-            width: "50px",
-            height: "50px",
+            width: "47px",
+            height: "47px",
             backgroundImage: `url("${userLogged.photoURL}")`,
             backgroundSize: "cover",
             backgroundPosition: "50% 50%",
@@ -41,19 +61,28 @@ const SideBarHeader = () => {
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          <MessageIcon sx={{ color: "secondary.contrastText" }} />
+          <Button size="small" sx={{ minWidth: "auto" }}>
+            <MessageIcon
+              onClick={startNewConversation}
+              sx={{ color: "secondary.contrastText" }}
+            />
+          </Button>
         </Box>
         <Box
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          <CropFreeIcon sx={{ color: "secondary.contrastText" }} />
+          <Button size="small" sx={{ minWidth: "auto" }}>
+            <CropFreeIcon sx={{ color: "secondary.contrastText" }} />
+          </Button>
         </Box>
         <Box
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          <MoreVertIcon sx={{ color: "secondary.contrastText" }} />
+          <Button size="small" sx={{ minWidth: "auto" }}>
+            <MoreVertIcon sx={{ color: "secondary.contrastText" }} />
+          </Button>
         </Box>
       </Box>
     </Box>

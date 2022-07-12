@@ -1,9 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Box } from "@mui/material";
 import SideBar from "./sideBar/SideBar";
 import Message from "./message/Message";
 import { ChatContext } from "../../context/ChatContext";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { db } from "../../App";
 
 const Home = () => {
   const [userChat, setUserChat] = useState(null);
@@ -11,33 +13,38 @@ const Home = () => {
   const auth = getAuth();
   const { setUserLogged, userLogged } = useContext(ChatContext);
 
+  // const makeUser = doc(db, "chat-app-12-07-2022/3242423");
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        if (user.uid && user.displayName && user.photoURL) {
+        if (user.uid && user.displayName && user.photoURL && user.email) {
           setUserLogged({
             id: user.uid,
             name: user.displayName,
             photoURL: user.photoURL,
+            email: user.email,
           });
         }
       } else {
-        console.log("Faça login");
+        alert("Faça login");
       }
-    });
-  }, [auth]);
 
-  // const logoutWithGoogle = () => {
-  //   setLogout(true);
-  //   signOut(auth)
-  //     .then((resolver) => {
-  //       setLogout(true);
-  //     })
-  //     .catch((error) => {
-  //       setLogout(false);
-  //       console.log("error: ", error);
-  //     });
-  // };
+      // async function saveDate() {
+      //   try {
+      //     const docRef = await addDoc(collection(db, "users"), {
+      //       id: userLogged.id,
+      //       chats: [],
+      //     });
+      //     setDoc(makeUser, docRef);
+      //   } catch (e) {
+      //     console.log(e);
+      //   }
+      // }
+      // console.log("a");
+      // saveDate();
+    });
+  }, []);
 
   return (
     <Box
