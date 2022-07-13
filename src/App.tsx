@@ -10,7 +10,7 @@ import { ChaStorage } from "./context/ChatContext";
 import { getFirestore } from "firebase/firestore";
 
 export const index = initializeApp(config.firebaseConfig);
-export const db = getFirestore();
+export const db = getFirestore(index);
 
 function App() {
   return (

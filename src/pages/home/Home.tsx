@@ -13,7 +13,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         if (user.uid && user.displayName && user.photoURL && user.email) {
           setUserLogged({
@@ -26,6 +26,7 @@ const Home = () => {
       } else {
         navigate("/home");
       }
+      return () => unsubscribe();
     });
   }, [auth, setUserLogged, navigate]);
 
