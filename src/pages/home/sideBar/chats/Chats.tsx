@@ -17,18 +17,18 @@ function Chats() {
   const { userLogged, conversations, setConversations } =
     useContext(ChatContext);
 
-  useEffect(() => {
-    if (conversations.length === 0) {
-      onSnapshot(collection(db, "Conversations"), (snap) => {
-        snap.docs.map((item) => {
-          if (item.data().sendBy === userLogged.id) {
-            return setConversations((prev) => [...prev, item.data()]);
-          }
-        });
-      });
-    }
-  }, [conversations, userLogged, setConversations]);
-  console.log(conversations);
+  // useEffect(() => {
+  //   if (conversations.length === 0) {
+  //     onSnapshot(collection(db, "Conversations"), (snap) => {
+  //       snap.docs.map((item) => {
+  //         if (item.data().sendBy === userLogged.id) {
+  //           return setConversations((prev) => [...prev, item.data()]);
+  //         }
+  //       });
+  //     });
+  //   }
+  // }, [conversations, userLogged, setConversations]);
+  // console.log(conversations);
 
   return (
     <Box

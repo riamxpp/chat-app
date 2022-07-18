@@ -4,40 +4,14 @@ import SendIcon from "@mui/icons-material/Send";
 import MicIcon from "@mui/icons-material/Mic";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
-import {
-  addDoc,
-  collection,
-  onSnapshot,
-  serverTimestamp,
-} from "firebase/firestore";
-import { db } from "../../../../App";
 import { ChatContext } from "../../../../context/ChatContext";
-import { getAuth } from "firebase/auth";
 
 const ChatMessage = () => {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState("");
-
   const { userLogged } = useContext(ChatContext);
 
-  useEffect(() => {
-    // onSnapshot(collection(db, "Messages"), (snap) => {
-    //   snap.docs.map((item) => console.log(item.data()));
-    // });
-  }, []);
-
-  const sendMessage = async (event: React.MouseEvent<HTMLFormElement>) => {
+  const sendMessage = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
-    try {
-      await addDoc(collection(db, "Messages"), {
-        text: message,
-        sendBy: userLogged.id,
-        sentTo: "",
-        createdAt: serverTimestamp(),
-      });
-    } catch (e) {
-      alert(e);
-    }
   };
 
   return (

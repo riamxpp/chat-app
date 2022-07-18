@@ -9,6 +9,7 @@ export interface IChatContext {
   setUserLogged: React.Dispatch<SetStateAction<User>>;
   conversations: Array<any>;
   setConversations: React.Dispatch<SetStateAction<Array<any>>>;
+  handleNewConversetion: (email: string) => void;
 }
 
 export const IInitialValuesChat: IChatContext = {
@@ -19,4 +20,5 @@ export const IInitialValuesChat: IChatContext = {
   setUserLogged: () => {},
   conversations: [],
   setConversations: () => {},
+  handleNewConversetion: () => {},
 };

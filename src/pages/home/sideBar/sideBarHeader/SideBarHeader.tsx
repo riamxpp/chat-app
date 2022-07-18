@@ -5,27 +5,9 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CropFreeIcon from "@mui/icons-material/CropFree";
 import { ChatContext } from "../../../../context/ChatContext";
 import * as EmailValidator from "email-validator";
-import { serverTimestamp } from "firebase/database";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../../../App";
 
 const SideBarHeader = () => {
-  const { userLogged } = useContext(ChatContext);
-
-  const handleNewConversetion = async (email: string) => {
-    try {
-      await addDoc(collection(db, "Conversations"), {
-        sendBy: userLogged.id,
-        sendersPhoto: userLogged.photoURL,
-        sentTo: email,
-        recipientsPhoto: "",
-        createdAt: serverTimestamp(),
-        messages: [],
-      });
-    } catch (e) {
-      alert(e);
-    }
-  };
+  const { userLogged, handleNewConversetion } = useContext(ChatContext);
 
   const startNewConversation = async () => {
     const emailPrompt = prompt("Insira o endereço de email!");
