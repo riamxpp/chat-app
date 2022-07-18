@@ -1,14 +1,8 @@
-import { Avatar, Box, Button, Typography } from "@mui/material";
-import { getAuth, signOut } from "firebase/auth";
+import { Avatar, Box, Typography } from "@mui/material";
 import React from "react";
 import Teste from "../../../../teste.jpg";
 
 const HeaderMessage = () => {
-  const auth = getAuth();
-  const handleLogout = () => {
-    signOut(auth);
-  };
-
   return (
     <Box
       component="header"
@@ -36,20 +30,6 @@ const HeaderMessage = () => {
             User
           </Typography>
         </Box>
-      </Box>
-      <Box>
-        <Button
-          onClick={handleLogout}
-          variant="contained"
-          size="small"
-          sx={{
-            justifySelf: "flex-end",
-            textTransform: "initial",
-            height: "30px",
-          }}
-        >
-          Logout
-        </Button>
       </Box>
     </Box>
   );

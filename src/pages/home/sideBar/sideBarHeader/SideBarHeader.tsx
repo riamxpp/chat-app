@@ -1,13 +1,15 @@
 import { Avatar, Box, Button } from "@mui/material";
 import React, { useContext } from "react";
 import MessageIcon from "@mui/icons-material/Message";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CropFreeIcon from "@mui/icons-material/CropFree";
 import { ChatContext } from "../../../../context/ChatContext";
 import * as EmailValidator from "email-validator";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { getAuth, signOut } from "firebase/auth";
 
 const SideBarHeader = () => {
   const { userLogged, handleNewConversetion } = useContext(ChatContext);
+  const auth = getAuth();
 
   const startNewConversation = async () => {
     const emailPrompt = prompt("Insira o endereço de email!");
@@ -22,6 +24,10 @@ const SideBarHeader = () => {
         await handleNewConversetion(emailPrompt);
       }
     }
+  };
+
+  const handleLogout = () => {
+    signOut(auth);
   };
 
   if (!userLogged) return <div>ERROR</div>;
@@ -69,8 +75,8 @@ const SideBarHeader = () => {
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          <Button size="small" sx={{ minWidth: "auto" }}>
-            <MoreVertIcon sx={{ color: "secondary.contrastText" }} />
+          <Button size="small" sx={{ minWidth: "auto" }} onClick={handleLogout}>
+            <LogoutIcon sx={{ color: "secondary.contrastText" }} />
           </Button>
         </Box>
       </Box>
