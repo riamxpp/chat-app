@@ -7,6 +7,8 @@ export interface IChatContext {
   changeTheme: () => void;
   userLogged: User;
   setUserLogged: React.Dispatch<SetStateAction<User>>;
+  conversations: Array<any>;
+  setConversations: React.Dispatch<SetStateAction<Array<any>>>;
 }
 
 export const IInitialValuesChat: IChatContext = {
@@ -15,4 +17,6 @@ export const IInitialValuesChat: IChatContext = {
   changeTheme: () => {},
   userLogged: { id: "", name: "", photoURL: "", email: "" },
   setUserLogged: () => {},
+  conversations: [],
+  setConversations: () => {},
 };

@@ -1,17 +1,33 @@
 import { Avatar, Box, Button } from "@mui/material";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CropFreeIcon from "@mui/icons-material/CropFree";
 import { ChatContext } from "../../../../context/ChatContext";
 import * as EmailValidator from "email-validator";
-import { getDatabase, ref, set } from "firebase/database";
+import { serverTimestamp } from "firebase/database";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../../../App";
 
 const SideBarHeader = () => {
   const { userLogged } = useContext(ChatContext);
-  const database = getDatabase();
 
-  const startNewConversation = () => {
+  const handleNewConversetion = async (email: string) => {
+    try {
+      await addDoc(collection(db, "Conversations"), {
+        sendBy: userLogged.id,
+        sendersPhoto: userLogged.photoURL,
+        sentTo: email,
+        recipientsPhoto: "",
+        createdAt: serverTimestamp(),
+        messages: [],
+      });
+    } catch (e) {
+      alert(e);
+    }
+  };
+
+  const startNewConversation = async () => {
     const emailPrompt = prompt("Insira o endereço de email!");
     if (!emailPrompt) {
       alert("Email inválido");
@@ -21,10 +37,7 @@ const SideBarHeader = () => {
       } else if (emailPrompt === userLogged.email) {
         alert("Insira um email diferente do seu!");
       } else {
-        alert("Email válido!");
-        set(ref(database, "users/" + userLogged.id), {
-          users: [userLogged.email, emailPrompt],
-        });
+        await handleNewConversetion(emailPrompt);
       }
     }
   };
@@ -51,7 +64,11 @@ const SideBarHeader = () => {
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          <Button size="small" sx={{ minWidth: "auto" }}>
+          <Button
+            size="small"
+            sx={{ minWidth: "auto" }}
+            // onClick={handleNewConversetion}
+          >
             <MessageIcon
               onClick={startNewConversation}
               sx={{ color: "secondary.contrastText" }}

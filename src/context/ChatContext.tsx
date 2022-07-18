@@ -14,6 +14,7 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
     photoURL: "",
     email: "",
   });
+  const [conversations, setConversations] = useState<Array<any>>([]);
 
   function changeTheme() {
     themeName === "dark" ? setThemeName("light") : setThemeName("dark");
@@ -27,6 +28,8 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
         changeTheme,
         userLogged,
         setUserLogged,
+        conversations,
+        setConversations,
       }}
     >
       <ThemeProvider theme={themeName === "light" ? LightTheme : DarkTheme}>
