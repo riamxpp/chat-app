@@ -30,7 +30,9 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
       ...datePrev,
       {
         sendBy: userLogged.id,
+        sendByPhoto: userLogged.photoURL,
         sendTo: email,
+        sendToPhoto: "",
         createdAt: serverTimestamp(),
         messages: [
           {
