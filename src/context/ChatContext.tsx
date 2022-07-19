@@ -51,6 +51,10 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
     );
   };
 
+  function clearName(name: string) {
+    return name.substring(name.indexOf("@"), -1);
+  }
+
   return (
     <ChatContext.Provider
       value={{
@@ -64,6 +68,7 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
         handleNewConversetion,
         dateConversations,
         setDateConversations,
+        clearName,
       }}
     >
       <ThemeProvider theme={themeName === "light" ? LightTheme : DarkTheme}>

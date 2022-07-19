@@ -7,38 +7,22 @@ import {
   ListItemAvatar,
   ListItemText,
 } from "@mui/material";
-import { collection, onSnapshot } from "firebase/firestore";
-import React, { useContext, useEffect, useMemo } from "react";
-import { db } from "../../../../App";
+import React, { useContext } from "react";
 import { ChatContext } from "../../../../context/ChatContext";
 import TesteFoto from "../../../../teste.jpg";
 
 function Chats() {
-  const { userLogged, conversations, setConversations } =
-    useContext(ChatContext);
-
-  // useEffect(() => {
-  //   if (conversations.length === 0) {
-  //     onSnapshot(collection(db, "Conversations"), (snap) => {
-  //       snap.docs.map((item) => {
-  //         if (item.data().sendBy === userLogged.id) {
-  //           return setConversations((prev) => [...prev, item.data()]);
-  //         }
-  //       });
-  //     });
-  //   }
-  // }, [conversations, userLogged, setConversations]);
-  // console.log(conversations);
+  const { dateConversations, clearName } = useContext(ChatContext);
 
   return (
     <Box
       bgcolor="primary.main"
       sx={{ padding: "0 10px", width: "100%", height: "89.9%" }}
     >
-      {/* <List>
+      <List>
         <Divider />
-        {conversations.length !== 0 &&
-          conversations.map((item) => (
+        {dateConversations.length !== 0 &&
+          dateConversations.map((item) => (
             <ListItem
               sx={{
                 padding: ".5rem 0",
@@ -49,7 +33,7 @@ function Chats() {
                   transition: ".3s",
                 },
               }}
-              key={item}
+              key={item.sendTo}
             >
               <Box
                 width="100%"
@@ -67,7 +51,7 @@ function Chats() {
                   <Avatar alt="Profile Picture" src={TesteFoto} />
                 </ListItemAvatar>
                 <ListItemText
-                  primary={item}
+                  primary={clearName(item.sendTo)}
                   secondary="Last Message"
                   sx={{ color: "secondary.contrastText" }}
                 />
@@ -76,7 +60,7 @@ function Chats() {
               </Box>
             </ListItem>
           ))}
-      </List> */}
+      </List>
     </Box>
   );
 }

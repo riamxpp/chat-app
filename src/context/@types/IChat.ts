@@ -13,6 +13,7 @@ export interface IChatContext {
   handleNewConversetion: (email: string, datePrev: Conversation[]) => void;
   dateConversations: Array<Conversation>;
   setDateConversations: React.Dispatch<any>;
+  clearName: (name: string) => string;
 }
 
 export const IInitialValuesChat: IChatContext = {
@@ -26,4 +27,5 @@ export const IInitialValuesChat: IChatContext = {
   handleNewConversetion: () => {},
   dateConversations: [],
   setDateConversations: () => {},
+  clearName: (name = "") => "",
 };
