@@ -1,5 +1,5 @@
 import { Avatar, Box, Button } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import CropFreeIcon from "@mui/icons-material/CropFree";
 import { ChatContext } from "../../../../context/ChatContext";
@@ -8,8 +8,25 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { getAuth, signOut } from "firebase/auth";
 
 const SideBarHeader = () => {
-  const { userLogged, handleNewConversetion } = useContext(ChatContext);
+  const {
+    userLogged,
+    handleNewConversetion,
+    setDateConversations,
+    dateConversations,
+  } = useContext(ChatContext);
   const auth = getAuth();
+
+  useEffect(() => {
+    const takeAllConversetions = () => {
+      fetch(
+        "https://chat-app-f3ec0-default-rtdb.firebaseio.com/Conversations.json"
+      )
+        .then((res) => res.json())
+        .then((json) => setDateConversations(json))
+        .catch((error) => console.log(error));
+    };
+    takeAllConversetions();
+  }, [setDateConversations]);
 
   const startNewConversation = async () => {
     const emailPrompt = prompt("Insira o endereço de email!");
@@ -21,7 +38,7 @@ const SideBarHeader = () => {
       } else if (emailPrompt === userLogged.email) {
         alert("Insira um email diferente do seu!");
       } else {
-        await handleNewConversetion(emailPrompt);
+        await handleNewConversetion(emailPrompt, dateConversations);
       }
     }
   };

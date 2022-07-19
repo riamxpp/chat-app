@@ -1,5 +1,6 @@
 import { User } from "../../@types/User";
 import { SetStateAction } from "react";
+import Conversation from "../../@types/Conversation";
 
 export interface IChatContext {
   themeName: "light" | "dark";
@@ -9,7 +10,9 @@ export interface IChatContext {
   setUserLogged: React.Dispatch<SetStateAction<User>>;
   conversations: Array<any>;
   setConversations: React.Dispatch<SetStateAction<Array<any>>>;
-  handleNewConversetion: (email: string) => void;
+  handleNewConversetion: (email: string, datePrev: Conversation[]) => void;
+  dateConversations: Array<Conversation>;
+  setDateConversations: React.Dispatch<any>;
 }
 
 export const IInitialValuesChat: IChatContext = {
@@ -21,4 +24,6 @@ export const IInitialValuesChat: IChatContext = {
   conversations: [],
   setConversations: () => {},
   handleNewConversetion: () => {},
+  dateConversations: [],
+  setDateConversations: () => {},
 };

@@ -17,24 +17,30 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
     email: "",
   });
   const [conversations, setConversations] = useState<Array<any>>([]);
+  const [dateConversations, setDateConversations] = useState<
+    Array<Conversation>
+  >([]);
 
   function changeTheme() {
     themeName === "dark" ? setThemeName("light") : setThemeName("dark");
   }
 
-  const handleNewConversetion = (email: string) => {
-    const conversation: Conversation = {
-      sendBy: userLogged.id,
-      sendTo: email,
-      createdAt: serverTimestamp(),
-      messages: [
-        {
-          text: "",
-          sendBy: "",
-          createdAt: serverTimestamp(),
-        },
-      ],
-    };
+  const handleNewConversetion = (email: string, datePrev: Conversation[]) => {
+    const conversation: Array<Conversation> = [
+      ...datePrev,
+      {
+        sendBy: userLogged.id,
+        sendTo: email,
+        createdAt: serverTimestamp(),
+        messages: [
+          {
+            text: "",
+            sendBy: "",
+            createdAt: serverTimestamp(),
+          },
+        ],
+      },
+    ];
 
     fetch(
       "https://chat-app-f3ec0-default-rtdb.firebaseio.com/Conversations.json",
@@ -56,6 +62,8 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
         conversations,
         setConversations,
         handleNewConversetion,
+        dateConversations,
+        setDateConversations,
       }}
     >
       <ThemeProvider theme={themeName === "light" ? LightTheme : DarkTheme}>

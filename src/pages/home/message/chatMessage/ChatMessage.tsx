@@ -10,6 +10,17 @@ const ChatMessage = () => {
   const [message, setMessage] = useState("");
   const { userLogged } = useContext(ChatContext);
 
+  useEffect(() => {
+    async function teste() {
+      fetch(
+        "https://chat-app-f3ec0-default-rtdb.firebaseio.com/Conversations.json"
+      )
+        .then((res) => res.json())
+        .then((json) => console.log(json));
+    }
+    teste();
+  });
+
   const sendMessage = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
