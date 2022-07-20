@@ -16,7 +16,7 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
     photoURL: "",
     email: "",
   });
-  const [conversations, setConversations] = useState<Array<any>>([]);
+  const [conversations, setConversations] = useState<Array<Conversation>>([]);
   const [dateConversations, setDateConversations] = useState<
     Array<Conversation>
   >([]);
@@ -25,10 +25,9 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
     themeName === "dark" ? setThemeName("light") : setThemeName("dark");
   }
 
-  const handleNewConversetion = (email: string, datePrev: Conversation[]) => {
-    const conversation: Array<Conversation> = [
-      ...datePrev,
-      {
+  const handleNewConversetion = (email: string) => {
+    if (dateConversations.length === 0) {
+      dateConversations.push({
         sendBy: userLogged.id,
         sendByPhoto: userLogged.photoURL,
         sendTo: email,
@@ -41,14 +40,29 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
             createdAt: serverTimestamp(),
           },
         ],
-      },
-    ];
+      });
+    } else {
+      dateConversations.push({
+        sendBy: userLogged.id,
+        sendByPhoto: userLogged.photoURL,
+        sendTo: email,
+        sendToPhoto: "",
+        createdAt: serverTimestamp(),
+        messages: [
+          {
+            text: "",
+            sendBy: "",
+            createdAt: serverTimestamp(),
+          },
+        ],
+      });
+    }
 
     fetch(
       "https://chat-app-f3ec0-default-rtdb.firebaseio.com/Conversations.json",
       {
         method: "PUT",
-        body: JSON.stringify(conversation),
+        body: JSON.stringify(dateConversations),
       }
     );
   };
@@ -56,6 +70,8 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
   function clearName(name: string) {
     return name.substring(name.indexOf("@"), -1);
   }
+
+  function takeConversationCurrentUser(uid: string): any {}
 
   return (
     <ChatContext.Provider
@@ -71,6 +87,7 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
         dateConversations,
         setDateConversations,
         clearName,
+        takeConversationCurrentUser,
       }}
     >
       <ThemeProvider theme={themeName === "light" ? LightTheme : DarkTheme}>

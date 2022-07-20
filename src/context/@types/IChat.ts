@@ -8,12 +8,13 @@ export interface IChatContext {
   changeTheme: () => void;
   userLogged: User;
   setUserLogged: React.Dispatch<SetStateAction<User>>;
-  conversations: Array<any>;
-  setConversations: React.Dispatch<SetStateAction<Array<any>>>;
-  handleNewConversetion: (email: string, datePrev: Conversation[]) => void;
+  conversations: Array<Conversation>;
+  setConversations: React.Dispatch<SetStateAction<Array<Conversation>>>;
+  handleNewConversetion: (email: string) => void;
   dateConversations: Array<Conversation>;
   setDateConversations: React.Dispatch<any>;
   clearName: (name: string) => string;
+  takeConversationCurrentUser: (uid: string) => void;
 }
 
 export const IInitialValuesChat: IChatContext = {
@@ -28,4 +29,5 @@ export const IInitialValuesChat: IChatContext = {
   dateConversations: [],
   setDateConversations: () => {},
   clearName: (name = "") => "",
+  takeConversationCurrentUser: () => {},
 };

@@ -1,25 +1,12 @@
-import React, { useState, ChangeEvent, useContext, useEffect } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { Box, Button, Input } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import MicIcon from "@mui/icons-material/Mic";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
-import { ChatContext } from "../../../../context/ChatContext";
 
 const ChatMessage = () => {
   const [message, setMessage] = useState("");
-  const { userLogged } = useContext(ChatContext);
-
-  useEffect(() => {
-    async function teste() {
-      fetch(
-        "https://chat-app-f3ec0-default-rtdb.firebaseio.com/Conversations.json"
-      )
-        .then((res) => res.json())
-        .then((json) => console.log(json));
-    }
-    teste();
-  });
 
   const sendMessage = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
