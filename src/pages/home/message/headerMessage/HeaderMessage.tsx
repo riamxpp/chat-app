@@ -1,8 +1,11 @@
 import { Avatar, Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { ChatContext } from "../../../../context/ChatContext";
 import Teste from "../../../../teste.jpg";
 
 const HeaderMessage = () => {
+  const { currentChat, clearName } = useContext(ChatContext);
+
   return (
     <Box
       component="header"
@@ -17,7 +20,7 @@ const HeaderMessage = () => {
       bgcolor="secondary.main"
     >
       <Box display="flex" sx={{ gap: "1rem" }}>
-        <Avatar alt="Your picture profile" src={Teste} />
+        <Avatar alt="Your picture profile" src={currentChat.sendToPhoto} />
         <Box
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
@@ -27,7 +30,7 @@ const HeaderMessage = () => {
             sx={{ color: "secondary.contrastText" }}
             component="span"
           >
-            User
+            {currentChat ? clearName(currentChat.sendTo) : ""}
           </Typography>
         </Box>
       </Box>
