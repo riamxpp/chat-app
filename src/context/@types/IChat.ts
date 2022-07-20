@@ -1,6 +1,7 @@
 import { User } from "../../@types/User";
 import { SetStateAction } from "react";
 import Conversation from "../../@types/Conversation";
+import { serverTimestamp } from "firebase/database";
 
 export interface IChatContext {
   themeName: "light" | "dark";
@@ -14,7 +15,9 @@ export interface IChatContext {
   dateConversations: Array<Conversation>;
   setDateConversations: React.Dispatch<any>;
   clearName: (name: string) => string;
-  takeConversationCurrentUser: (uid: string) => void;
+  takeConversationCurrentUser: (conversation: Conversation) => void;
+  currentChat: Conversation;
+  setCurrentChat: React.Dispatch<React.SetStateAction<Conversation>>;
 }
 
 export const IInitialValuesChat: IChatContext = {
@@ -29,5 +32,14 @@ export const IInitialValuesChat: IChatContext = {
   dateConversations: [],
   setDateConversations: () => {},
   clearName: (name = "") => "",
-  takeConversationCurrentUser: () => {},
+  takeConversationCurrentUser: (conversation) => {},
+  currentChat: {
+    createdAt: serverTimestamp(),
+    messages: [],
+    sendBy: "",
+    sendByPhoto: "",
+    sendTo: "",
+    sendToPhoto: "",
+  },
+  setCurrentChat: () => {},
 };

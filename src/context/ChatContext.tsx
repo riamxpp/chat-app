@@ -20,6 +20,9 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
   const [dateConversations, setDateConversations] = useState<
     Array<Conversation>
   >([]);
+  const [currentChat, setCurrentChat] = useState<Conversation>(
+    {} as Conversation
+  );
 
   function changeTheme() {
     themeName === "dark" ? setThemeName("light") : setThemeName("dark");
@@ -71,7 +74,9 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
     return name.substring(name.indexOf("@"), -1);
   }
 
-  function takeConversationCurrentUser(uid: string): any {}
+  function takeConversationCurrentUser(conversation: Conversation) {
+    setCurrentChat(conversation);
+  }
 
   return (
     <ChatContext.Provider
@@ -88,6 +93,8 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
         setDateConversations,
         clearName,
         takeConversationCurrentUser,
+        currentChat,
+        setCurrentChat,
       }}
     >
       <ThemeProvider theme={themeName === "light" ? LightTheme : DarkTheme}>

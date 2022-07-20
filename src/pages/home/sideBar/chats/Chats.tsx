@@ -10,11 +10,16 @@ import {
 import React, { useContext, useEffect } from "react";
 import Conversation from "../../../../@types/Conversation";
 import { ChatContext } from "../../../../context/ChatContext";
-import TesteFoto from "../../../../teste.jpg";
 
 function Chats() {
-  const { clearName, userLogged, conversations, setConversations } =
-    useContext(ChatContext);
+  const {
+    clearName,
+    userLogged,
+    conversations,
+    setConversations,
+    takeConversationCurrentUser,
+    currentChat,
+  } = useContext(ChatContext);
 
   useEffect(() => {
     setConversations([]);
@@ -47,16 +52,24 @@ function Chats() {
         {conversations
           ? conversations.map((item) => (
               <ListItem
-                sx={{
-                  padding: ".5rem 0",
-                  cursor: "pointer",
-                  transition: ".3s",
-                  "&:hover": {
-                    background: "#0b141a",
+                sx={[
+                  (theme) => ({
+                    padding: ".5rem 0",
+                    cursor: "pointer",
                     transition: ".3s",
-                  },
-                }}
-                key={item.sendByPhoto}
+                    backgroundColor: `${
+                      currentChat.sendTo === item.sendTo
+                        ? theme.palette.primary.dark
+                        : "initial"
+                    }`,
+                    "&:hover": {
+                      background: theme.palette.primary.dark,
+                      transition: ".3s",
+                    },
+                  }),
+                ]}
+                key={item.sendTo}
+                onClick={() => takeConversationCurrentUser(item)}
               >
                 <Box
                   width="100%"
@@ -71,7 +84,14 @@ function Chats() {
                       justifyContent: "center",
                     }}
                   >
-                    <Avatar alt="Profile Picture" src={TesteFoto} />
+                    <Avatar
+                      alt="Profile Picture"
+                      src={
+                        item.sendBy === userLogged.id
+                          ? item.sendByPhoto
+                          : item.sendToPhoto
+                      }
+                    />
                   </ListItemAvatar>
                   <ListItemText
                     primary={clearName(item.sendTo)}
