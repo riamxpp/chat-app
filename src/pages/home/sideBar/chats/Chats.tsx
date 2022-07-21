@@ -84,14 +84,7 @@ function Chats() {
                       justifyContent: "center",
                     }}
                   >
-                    <Avatar
-                      alt="Profile Picture"
-                      src={
-                        item.sendBy === userLogged.id
-                          ? item.sendByPhoto
-                          : item.sendToPhoto
-                      }
-                    />
+                    <Avatar alt="Profile Picture" src={item.sendToPhoto} />
                   </ListItemAvatar>
                   <ListItemText
                     primary={clearName(item.sendTo)}

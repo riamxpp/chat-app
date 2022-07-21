@@ -1,10 +1,14 @@
 import { Avatar, Box, Typography } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ChatContext } from "../../../../context/ChatContext";
-import Teste from "../../../../teste.jpg";
 
 const HeaderMessage = () => {
-  const { currentChat, clearName } = useContext(ChatContext);
+  const { currentChat, clearName, conversations, setCurrentChat } =
+    useContext(ChatContext);
+
+  useEffect(() => {
+    if (conversations.length !== 0) setCurrentChat(conversations[0]);
+  }, [setCurrentChat, conversations]);
 
   return (
     <Box
@@ -30,7 +34,7 @@ const HeaderMessage = () => {
             sx={{ color: "secondary.contrastText" }}
             component="span"
           >
-            {currentChat ? clearName(currentChat.sendTo) : ""}
+            {currentChat.sendTo ? clearName(currentChat.sendTo) : ""}
           </Typography>
         </Box>
       </Box>

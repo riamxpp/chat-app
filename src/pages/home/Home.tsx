@@ -29,7 +29,6 @@ const Home = () => {
       return () => unsubscribe();
     });
   }, [auth, setUserLogged, navigate]);
-
   return (
     <Box
       display="flex"

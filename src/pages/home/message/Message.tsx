@@ -1,9 +1,12 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { ChatContext } from "../../../context/ChatContext";
+import NoMessage from "../NoMessage";
 import ChatMessage from "./chatMessage/ChatMessage";
 import HeaderMessage from "./headerMessage/HeaderMessage";
 
 const Message = () => {
+  const { conversations } = useContext(ChatContext);
   return (
     <Box
       width="70%"
@@ -11,7 +14,8 @@ const Message = () => {
       sx={{ borderLeft: "thin solid", borderColor: "secondary.contrastText" }}
     >
       <HeaderMessage />
-      <ChatMessage />
+
+      {conversations.length === 0 ? <NoMessage></NoMessage> : <ChatMessage />}
     </Box>
   );
 };
