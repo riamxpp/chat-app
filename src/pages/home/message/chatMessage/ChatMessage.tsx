@@ -1,15 +1,25 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useContext } from "react";
 import { Box, Button, Input } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import MicIcon from "@mui/icons-material/Mic";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
+import MessageSection from "./MessageSection";
+import { ChatContext } from "../../../../context/ChatContext";
+import { serverTimestamp } from "firebase/database";
 
 const ChatMessage = () => {
   const [message, setMessage] = useState("");
+  const { sendMessage, userLogged } = useContext(ChatContext);
 
-  const sendMessage = (event: React.MouseEvent<HTMLFormElement>) => {
+  const handleMessage = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
+    sendMessage({
+      text: message,
+      sendBy: userLogged.email,
+      createdAt: serverTimestamp(),
+    });
+    setMessage("");
   };
 
   return (
@@ -20,7 +30,11 @@ const ChatMessage = () => {
       display="flex"
       sx={{ flexDirection: "column", justifyContent: "space-between" }}
     >
-      <Box height="90%" width="100%" bgcolor="primary.dark"></Box>
+      <MessageSection
+        width="100%"
+        bgcolor="primary.dark"
+        height="90%"
+      ></MessageSection>
       <Box
         height="10%"
         width="100%"
@@ -28,7 +42,7 @@ const ChatMessage = () => {
         sx={{ padding: "10px", alignItems: "center", justifyContent: "center" }}
         bgcolor="secondary.main"
         component="form"
-        onSubmit={sendMessage}
+        onSubmit={handleMessage}
       >
         <Box
           display="flex"

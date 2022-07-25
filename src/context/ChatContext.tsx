@@ -2,6 +2,7 @@ import { ThemeProvider } from "@mui/material";
 import { serverTimestamp } from "firebase/database";
 import React, { createContext, useState } from "react";
 import Conversation from "../@types/Conversation";
+import Message from "../@types/Message";
 import { DarkTheme } from "../themes/DarkTheme";
 import { LightTheme } from "../themes/LightTheme";
 import { IChatContext, IInitialValuesChat } from "./@types/IChat";
@@ -60,15 +61,18 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
         ],
       });
     }
+    fetchConversation(dateConversations);
+  };
 
+  function fetchConversation(date: Conversation[]) {
     fetch(
       "https://chat-app-f3ec0-default-rtdb.firebaseio.com/Conversations.json",
       {
         method: "PUT",
-        body: JSON.stringify(dateConversations),
+        body: JSON.stringify(date),
       }
     );
-  };
+  }
 
   function clearName(name: string) {
     return name.substring(name.indexOf("@"), -1);
@@ -76,6 +80,23 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
 
   function takeConversationCurrentUser(conversation: Conversation) {
     setCurrentChat(conversation);
+  }
+
+  function sendMessage(message: Message) {
+    // currentChat.messages.push(message);
+    fetchMessage(message);
+  }
+
+  function fetchMessage(message: Message) {
+    conversations.forEach((item, index) => {
+      if (
+        item.sendBy === currentChat.sendBy &&
+        item.sendTo === currentChat.sendTo
+      ) {
+        item.messages.push(message);
+      }
+    });
+    fetchConversation(conversations);
   }
 
   return (
@@ -95,6 +116,7 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
         takeConversationCurrentUser,
         currentChat,
         setCurrentChat,
+        sendMessage,
       }}
     >
       <ThemeProvider theme={themeName === "light" ? LightTheme : DarkTheme}>
