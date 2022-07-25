@@ -9,7 +9,7 @@ interface IPropsMessageSection {
 }
 
 const MessageSection = (props: IPropsMessageSection) => {
-  const { currentChat } = useContext(ChatContext);
+  const { currentChat, userLogged } = useContext(ChatContext);
 
   if (!currentChat.messages) return <div></div>;
   return (
@@ -28,11 +28,16 @@ const MessageSection = (props: IPropsMessageSection) => {
               width="100%"
               height="auto"
               display="flex"
-              sx={{
-                alignItems: "center",
-                padding: "0 20px",
-                marginTop: "10px",
-              }}
+              sx={[
+                () => ({
+                  alignItems: "center",
+                  padding: "0 20px",
+                  marginTop: "10px",
+                  justifyContent: `${
+                    message.sendBy === userLogged.email ? "flex-end" : ""
+                  }`,
+                }),
+              ]}
             >
               <Box
                 sx={{
