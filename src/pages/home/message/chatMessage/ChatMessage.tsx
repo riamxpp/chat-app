@@ -10,11 +10,11 @@ import { serverTimestamp } from "firebase/database";
 
 const ChatMessage = () => {
   const [message, setMessage] = useState("");
-  const { sendMessage, userLogged } = useContext(ChatContext);
+  const { fetchMessage, userLogged } = useContext(ChatContext);
 
   const handleMessage = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
-    sendMessage({
+    fetchMessage({
       text: message,
       sendBy: userLogged.email,
       createdAt: serverTimestamp(),

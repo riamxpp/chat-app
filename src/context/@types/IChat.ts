@@ -7,7 +7,7 @@ import Message from "../../@types/Message";
 export interface IChatContext {
   themeName: "light" | "dark";
   setThemeName: React.Dispatch<SetStateAction<"light" | "dark">>;
-  changeTheme: () => void;
+  changeTheme: (theme?: "light" | "dark") => void;
   userLogged: User;
   setUserLogged: React.Dispatch<SetStateAction<User>>;
   conversations: Array<Conversation>;
@@ -19,7 +19,7 @@ export interface IChatContext {
   takeConversationCurrentUser: (conversation: Conversation) => void;
   currentChat: Conversation;
   setCurrentChat: React.Dispatch<React.SetStateAction<Conversation>>;
-  sendMessage: (message: Message) => void;
+  fetchMessage: (message: Message) => void;
 }
 
 export const IInitialValuesChat: IChatContext = {
@@ -45,5 +45,5 @@ export const IInitialValuesChat: IChatContext = {
     lastMessage: "",
   },
   setCurrentChat: () => {},
-  sendMessage: () => {},
+  fetchMessage: () => {},
 };

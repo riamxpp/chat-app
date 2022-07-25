@@ -25,44 +25,33 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
     {} as Conversation
   );
 
-  function changeTheme() {
-    themeName === "dark" ? setThemeName("light") : setThemeName("dark");
+  function changeTheme(theme?: "light" | "dark") {
+    if (theme) {
+      setThemeName(theme);
+      localStorage.setItem("theme", themeName);
+    } else {
+      localStorage.setItem("theme", themeName);
+      themeName === "dark" ? setThemeName("light") : setThemeName("dark");
+    }
+    console.log(themeName);
   }
 
   const handleNewConversetion = (email: string) => {
-    if (dateConversations.length === 0) {
-      dateConversations.push({
-        sendBy: userLogged.id,
-        sendByPhoto: userLogged.photoURL,
-        sendTo: email,
-        sendToPhoto: "",
-        createdAt: serverTimestamp(),
-        messages: [
-          {
-            text: "",
-            sendBy: "",
-            createdAt: serverTimestamp(),
-          },
-        ],
-        lastMessage: "",
-      });
-    } else {
-      dateConversations.push({
-        sendBy: userLogged.id,
-        sendByPhoto: userLogged.photoURL,
-        sendTo: email,
-        sendToPhoto: "",
-        createdAt: serverTimestamp(),
-        messages: [
-          {
-            text: "",
-            sendBy: "",
-            createdAt: serverTimestamp(),
-          },
-        ],
-        lastMessage: "",
-      });
-    }
+    dateConversations.push({
+      sendBy: userLogged.id,
+      sendByPhoto: userLogged.photoURL,
+      sendTo: email,
+      sendToPhoto: "",
+      createdAt: serverTimestamp(),
+      messages: [
+        {
+          text: "",
+          sendBy: "",
+          createdAt: serverTimestamp(),
+        },
+      ],
+      lastMessage: "",
+    });
     fetchConversation(dateConversations);
   };
 
@@ -84,10 +73,6 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
     setCurrentChat(conversation);
   }
 
-  function sendMessage(message: Message) {
-    fetchMessage(message);
-  }
-
   function fetchMessage(message: Message) {
     conversations.forEach((item) => {
       if (
@@ -95,6 +80,8 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
         item.sendTo === currentChat.sendTo
       ) {
         item.messages.push(message);
+        item.lastMessage = message.text;
+        setCurrentChat(item);
       }
     });
     fetchConversation(conversations);
@@ -117,7 +104,7 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
         takeConversationCurrentUser,
         currentChat,
         setCurrentChat,
-        sendMessage,
+        fetchMessage,
       }}
     >
       <ThemeProvider theme={themeName === "light" ? LightTheme : DarkTheme}>

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Box } from "@mui/material";
 import SideBar from "./sideBar/SideBar";
@@ -7,7 +7,6 @@ import { ChatContext } from "../../context/ChatContext";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [userChat, setUserChat] = useState(null);
   const auth = getAuth();
   const { setUserLogged } = useContext(ChatContext);
   const navigate = useNavigate();
@@ -37,7 +36,7 @@ const Home = () => {
       component="section"
       sx={{ flexShrink: "0" }}
     >
-      <SideBar userChat={userChat} setUserChat={setUserChat}></SideBar>
+      <SideBar></SideBar>
       <Message></Message>
     </Box>
   );

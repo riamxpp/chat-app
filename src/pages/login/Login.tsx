@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Box, Button } from "@mui/material";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,12 @@ const Login = () => {
   const navigate = useNavigate();
   const [authing, setAuthing] = useState(false);
   const provider = new GoogleAuthProvider();
+  let themeSaved = localStorage.getItem("theme");
+
+  useEffect(() => {
+    if (themeSaved === "light") changeTheme("dark");
+    else changeTheme("light");
+  }, []);
 
   const signInWithGoogle = async () => {
     setAuthing(true);

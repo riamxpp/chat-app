@@ -14,11 +14,7 @@ const MessageSection = (props: IPropsMessageSection) => {
   if (!currentChat.messages) return <div></div>;
   return (
     <Box {...props} sx={{ overflow: "hidden" }}>
-      <Box
-        width="100%"
-        height="100%"
-        sx={{ overflow: "auto", marginTop: "10px" }}
-      >
+      <Box width="100%" height="100%" sx={{ overflow: "auto" }}>
         {currentChat.messages.map((message, index) =>
           message.text.length === 1 ? (
             ""
