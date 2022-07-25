@@ -42,6 +42,7 @@ function Chats() {
     takeConversationsCurrentUser();
   }, [userLogged.email, userLogged.id, setConversations]);
 
+  if (!currentChat.sendBy) return <div></div>;
   return (
     <Box
       bgcolor="primary.main"
@@ -57,6 +58,7 @@ function Chats() {
                     padding: ".5rem 0",
                     cursor: "pointer",
                     transition: ".3s",
+                    overflow: "hidden",
                     backgroundColor: `${
                       currentChat.sendTo === item.sendTo
                         ? theme.palette.primary.dark
@@ -75,7 +77,7 @@ function Chats() {
                   width="100%"
                   component="article"
                   display="flex"
-                  sx={{ gap: "1rem" }}
+                  sx={{ gap: "1rem", position: "relative" }}
                 >
                   <ListItemAvatar
                     sx={{
@@ -88,8 +90,41 @@ function Chats() {
                   </ListItemAvatar>
                   <ListItemText
                     primary={clearName(item.sendTo)}
-                    secondary="Last Message"
-                    sx={{ color: "secondary.contrastText" }}
+                    secondary={
+                      currentChat.messages[currentChat.messages.length - 1].text
+                    }
+                    sx={[
+                      (theme) => ({
+                        color: "secondary.contrastText",
+                        whiteSpace: "nowrap",
+                        "&::before": {
+                          content: `${
+                            currentChat.messages[
+                              currentChat.messages.length - 1
+                            ].text.length > 23
+                              ? '"..."'
+                              : '""'
+                          }`,
+                          right: "11px",
+                          top: "31px",
+                          zIndex: "1",
+                          position: "absolute",
+                        },
+                        "&::after": {
+                          content: '""',
+                          width: "27px",
+                          height: "15px",
+                          backgroundColor: `${
+                            currentChat.sendTo === item.sendTo
+                              ? theme.palette.primary.dark
+                              : "initial"
+                          }`,
+                          position: "absolute",
+                          top: "35px",
+                          right: "0px",
+                        },
+                      }),
+                    ]}
                   />
 
                   <Divider />
