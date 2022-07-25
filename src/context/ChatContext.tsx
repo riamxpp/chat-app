@@ -33,7 +33,6 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
       localStorage.setItem("theme", themeName);
       themeName === "dark" ? setThemeName("light") : setThemeName("dark");
     }
-    console.log(themeName);
   }
 
   const handleNewConversetion = (email: string) => {

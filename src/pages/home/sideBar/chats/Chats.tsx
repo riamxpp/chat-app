@@ -45,7 +45,6 @@ function Chats() {
 
   useEffect(() => {
     setShowLastMessage(currentChat.lastMessage);
-    console.log("entrou");
   }, [currentChat.lastMessage]);
 
   if (!currentChat.sendBy) return <div></div>;
