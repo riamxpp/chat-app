@@ -7,4 +7,5 @@ export default interface Conversation {
   sendToPhoto: string;
   createdAt: object;
   messages: Array<Message>;
+  lastMessage: string;
 }

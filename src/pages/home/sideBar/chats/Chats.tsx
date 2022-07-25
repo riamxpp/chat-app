@@ -42,6 +42,8 @@ function Chats() {
     takeConversationsCurrentUser();
   }, [userLogged.email, userLogged.id, setConversations]);
 
+  useEffect(() => {}, [currentChat.messages]);
+
   if (!currentChat.sendBy) return <div></div>;
   return (
     <Box
@@ -77,7 +79,7 @@ function Chats() {
                   width="100%"
                   component="article"
                   display="flex"
-                  sx={{ gap: "1rem", position: "relative" }}
+                  sx={{ gap: "1rem", position: "relative", height: "50px" }}
                 >
                   <ListItemAvatar
                     sx={{

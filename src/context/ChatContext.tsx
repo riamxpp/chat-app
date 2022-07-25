@@ -44,6 +44,7 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
             createdAt: serverTimestamp(),
           },
         ],
+        lastMessage: "",
       });
     } else {
       dateConversations.push({
@@ -59,6 +60,7 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
             createdAt: serverTimestamp(),
           },
         ],
+        lastMessage: "",
       });
     }
     fetchConversation(dateConversations);
@@ -83,12 +85,11 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
   }
 
   function sendMessage(message: Message) {
-    // currentChat.messages.push(message);
     fetchMessage(message);
   }
 
   function fetchMessage(message: Message) {
-    conversations.forEach((item, index) => {
+    conversations.forEach((item) => {
       if (
         item.sendBy === currentChat.sendBy &&
         item.sendTo === currentChat.sendTo
