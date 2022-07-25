@@ -20,10 +20,10 @@ const Login = () => {
   const signInWithGoogle = async () => {
     setAuthing(true);
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(() => {
         navigate("/home");
       })
-      .catch((error) => {
+      .catch(() => {
         setAuthing(false);
       });
   };

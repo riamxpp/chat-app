@@ -14,7 +14,24 @@ const MessageSection = (props: IPropsMessageSection) => {
   if (!currentChat.messages) return <div></div>;
   return (
     <Box {...props} sx={{ overflow: "hidden" }}>
-      <Box width="100%" height="100%" sx={{ overflow: "auto" }}>
+      <Box
+        width="100%"
+        height="100%"
+        sx={{
+          overflow: "auto",
+          "&::-webkit-scrollbar-track": {
+            backgroundColor: "#primary.dark",
+          },
+          "&::-webkit-scrollbar": {
+            width: "6px",
+            backgroundColor: "primary.dark",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "secondary.contrastText",
+            borderRadius: "4px",
+          },
+        }}
+      >
         {currentChat.messages.map((message, index) =>
           message.text.length === 1 ? (
             ""
@@ -32,18 +49,6 @@ const MessageSection = (props: IPropsMessageSection) => {
                   justifyContent: `${
                     message.sendBy === userLogged.email ? "flex-end" : ""
                   }`,
-                  "&::-webkit-scrollbar": {
-                    width: "0.4em",
-                  },
-                  "&::-webkit-scrollbar-track": {
-                    background: "#f1f1f1",
-                  },
-                  "&::-webkit-scrollbar-thumb": {
-                    backgroundColor: "#888",
-                  },
-                  "&::-webkit-scrollbar-thumb:hover": {
-                    background: "#555",
-                  },
                 }),
               ]}
             >
