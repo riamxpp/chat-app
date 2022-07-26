@@ -7,7 +7,7 @@ import {
   ListItemAvatar,
   ListItemText,
 } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Conversation from "../../../../@types/Conversation";
 import { ChatContext } from "../../../../context/ChatContext";
 
@@ -20,7 +20,6 @@ function Chats() {
     takeConversationCurrentUser,
     currentChat,
   } = useContext(ChatContext);
-  const [showLastMessage, setShowLastMessage] = useState("");
 
   useEffect(() => {
     setConversations([]);
@@ -42,10 +41,6 @@ function Chats() {
     }
     takeConversationsCurrentUser();
   }, [userLogged.email, userLogged.id, setConversations]);
-
-  useEffect(() => {
-    setShowLastMessage(currentChat.lastMessage);
-  }, [currentChat.lastMessage]);
 
   if (!currentChat.sendBy) return <div></div>;
   return (
@@ -95,7 +90,7 @@ function Chats() {
                   </ListItemAvatar>
                   <ListItemText
                     primary={clearName(item.sendTo)}
-                    secondary={showLastMessage}
+                    secondary={item.lastMessage}
                     sx={[
                       (theme) => ({
                         color: "secondary.contrastText",
