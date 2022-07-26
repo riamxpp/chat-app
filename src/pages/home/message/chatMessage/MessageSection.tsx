@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { ChatContext } from "../../../../context/ChatContext";
 
 interface IPropsMessageSection {
@@ -9,7 +9,13 @@ interface IPropsMessageSection {
 }
 
 const MessageSection = (props: IPropsMessageSection) => {
-  const { currentChat, userLogged } = useContext(ChatContext);
+  const { currentChat, userLogged, messages } = useContext(ChatContext);
+  const hiddenRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (hiddenRef.current)
+      hiddenRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   if (!currentChat.messages) return <div></div>;
   return (
@@ -70,6 +76,11 @@ const MessageSection = (props: IPropsMessageSection) => {
             </Box>
           )
         )}
+        <Box
+          id="hidden"
+          ref={hiddenRef}
+          sx={{ width: "100%", height: "10px" }}
+        ></Box>
       </Box>
     </Box>
   );

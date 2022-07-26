@@ -1,5 +1,5 @@
 import { User } from "../../@types/User";
-import { SetStateAction } from "react";
+import React, { SetStateAction } from "react";
 import Conversation from "../../@types/Conversation";
 import { serverTimestamp } from "firebase/database";
 import Message from "../../@types/Message";
@@ -20,6 +20,8 @@ export interface IChatContext {
   currentChat: Conversation;
   setCurrentChat: React.Dispatch<React.SetStateAction<Conversation>>;
   fetchMessage: (message: Message) => void;
+  messages: Array<Message>;
+  setMessages: React.Dispatch<React.SetStateAction<Array<Message>>>;
 }
 
 export const IInitialValuesChat: IChatContext = {
@@ -46,4 +48,6 @@ export const IInitialValuesChat: IChatContext = {
   },
   setCurrentChat: () => {},
   fetchMessage: () => {},
+  messages: [],
+  setMessages: () => {},
 };

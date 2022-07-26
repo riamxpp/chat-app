@@ -24,6 +24,7 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
   const [currentChat, setCurrentChat] = useState<Conversation>(
     {} as Conversation
   );
+  const [messages, setMessages] = useState<Array<Message>>([]);
 
   function changeTheme(theme?: "light" | "dark") {
     if (theme) {
@@ -104,6 +105,8 @@ export const ChaStorage: React.FC<any> = ({ children }) => {
         currentChat,
         setCurrentChat,
         fetchMessage,
+        setMessages,
+        messages,
       }}
     >
       <ThemeProvider theme={themeName === "light" ? LightTheme : DarkTheme}>
