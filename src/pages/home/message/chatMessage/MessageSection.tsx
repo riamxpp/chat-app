@@ -33,7 +33,7 @@ const MessageSection = (props: IPropsMessageSection) => {
         }}
       >
         {currentChat.messages.map((message, index) =>
-          message.text.length === 1 ? (
+          message.text.length === 1 || index === 0 ? (
             ""
           ) : (
             <Box
