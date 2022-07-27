@@ -42,7 +42,10 @@ function Chats() {
     takeConversationsCurrentUser();
   }, [userLogged.email, userLogged.id, setConversations]);
 
-  if (!currentChat.sendBy) return <div></div>;
+  if (!currentChat.sendBy)
+    return (
+      <Box sx={{ width: "100%", height: "89.9%" }} bgcolor="primary.main"></Box>
+    );
   return (
     <Box
       bgcolor="primary.main"
