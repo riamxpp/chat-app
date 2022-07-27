@@ -32,3 +32,15 @@ Após baixar o projeto, você pode abrir com o `Visual Studio CODE`:
 - Quando terminar de instalar as depedências, basta iniciar o projeto com o comando 'npm start'.
 
 O `Visual Studio Code` deve executar o projeto em seu navegador. 🏆 
+
+## :full_moon: :new_moon: Themas
+
+<h2>Tema Claro :full_moon: </h2>
+<div>
+  <img src="https://user-images.githubusercontent.com/83230961/181300312-0e4c9b5c-aef9-4f07-9bd3-50408a94849d.png" alt="tema claro" width="200" height="200"/>
+</div>
+
+<h2>Tema Escuro :full_moon: </h2>
+<div>
+  <img src="https://user-images.githubusercontent.com/83230961/181300793-f238e297-af08-440b-a3ed-911b870bc875.png" alt="tema escuro" width="200" height="200"/>
+</div>
