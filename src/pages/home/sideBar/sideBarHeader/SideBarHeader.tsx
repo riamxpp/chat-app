@@ -1,15 +1,18 @@
-import { Avatar, Box, Button } from "@mui/material";
+import { Avatar, Box, Button, Switch } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import MessageIcon from "@mui/icons-material/Message";
-import CropFreeIcon from "@mui/icons-material/CropFree";
 import { ChatContext } from "../../../../context/ChatContext";
 import * as EmailValidator from "email-validator";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { getAuth, signOut } from "firebase/auth";
 
 const SideBarHeader = () => {
-  const { userLogged, handleNewConversetion, setDateConversations } =
-    useContext(ChatContext);
+  const {
+    userLogged,
+    handleNewConversetion,
+    setDateConversations,
+    changeTheme,
+  } = useContext(ChatContext);
   const auth = getAuth();
 
   useEffect(() => {
@@ -40,7 +43,6 @@ const SideBarHeader = () => {
       }
     }
   };
-
   const handleLogout = () => {
     signOut(auth);
   };
@@ -67,11 +69,7 @@ const SideBarHeader = () => {
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          <Button
-            size="small"
-            sx={{ minWidth: "auto" }}
-            // onClick={handleNewConversetion}
-          >
+          <Button size="small" sx={{ minWidth: "auto" }}>
             <MessageIcon
               onClick={startNewConversation}
               sx={{ color: "secondary.contrastText" }}
@@ -82,9 +80,11 @@ const SideBarHeader = () => {
           display="flex"
           sx={{ alignItems: "center", justifyContent: "center" }}
         >
-          <Button size="small" sx={{ minWidth: "auto" }}>
-            <CropFreeIcon sx={{ color: "secondary.contrastText" }} />
-          </Button>
+          <Switch
+            aria-label="Trocar tema"
+            onClick={() => changeTheme()}
+            color="default"
+          ></Switch>
         </Box>
         <Box
           display="flex"
