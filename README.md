@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+<h1>Chat App</h1>
+<p>Projeto tem como ideia ser uma cópia do whatsapp</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## :hammer: Funcionalidades do projeto
 
-## Available Scripts
+- `Funcionalidade 1`: `Login`: utilizando authentication do firebase, você pode fazer login utilizando a sua conta do google.
+- `Funcionalidade 2`: `Iniciar`: conversa, para iniciar uma conversa com seu amigo, basta informar o email dele no prompt de iniciar nova conversa.
+- `Funcionalidade 2`: `Themas`: o projeto conta com thema Claro e Escuro, sendo possível mudar com um click.
+- `Funcionalidade 3`: `Enviar`: mensagens, ao enviar mensagens o usuário irá recebe-la instantaneamente. Também foi adicionado scroll automatico ao entrar na conversa ou ao enviar uma nova mensagem, para melhor UX do usuário.
 
-In the project directory, you can run:
+## ✔️ Técnicas e tecnologias utilizadas
 
-### `npm start`
+- ``Javascript``
+<a href="https://www.java.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="java" width="40" height="40"/> </a>
+- ``React``
+<a href="https://www.java.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="java" width="40" height="40"/> </a>
+- ``Typescript``
+<a href="https://www.java.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="java" width="40" height="40"/> 
+- ``Firebase``
+</a><a href="https://camo.githubusercontent.com/b60dbebe62aa667888aeb73e44c20f828aa5681cfdb0824730e147564fd7f92c/68747470733a2f2f6d706e672e706e67666c792e636f6d2f32303138303431372f7073652f6b697373706e672d66697265626173652d636c6f75642d6d6573736167696e672d636f6d70757465722d69636f6e732d676f6f676c652d636c6f2d6769746875622d35616435643363653233396362362e383532353233313631353233393632383330313435392e6a7067" alt="java" width="40" height="40"/> </a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Acesso ao projeto
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Você pode [acessar o código fonte do projeto](https://github.com/riamxpp/chat-app) ou [baixá-lo](https://github.com/riamxpp/chat-app/archive/refs/heads/master.zip).
 
-### `npm test`
+## Abrir e rodar o projeto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Após baixar o projeto, você pode abrir com o `Visual Studio CODE`:
 
-### `npm run build`
+- Clique com botão direito do mouse na pasta baixada e procure a opção 'Abrir com Code', ao encontrar clique;
+- Ao entrar no visual studio code com a pasta do projeto abra o terminal do code apertando 'crtl + j' e digite o comando 'git install';
+- Quando terminar de instalar as depedências bastar iniciar o projeto com o comando 'npm start'.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+O `Visual Studio Code` deve executar o projeto em seu navegador. 🏆 
