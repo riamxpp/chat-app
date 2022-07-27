@@ -30,7 +30,9 @@ function Chats() {
         .then((res) => res.json())
         .then((json) => {
           json.forEach((item: Conversation) => {
-            if (
+            if (!item) {
+              return;
+            } else if (
               item.sendBy === userLogged.id ||
               item.sendTo === userLogged.email
             ) {
@@ -73,7 +75,7 @@ function Chats() {
                     },
                   }),
                 ]}
-                key={item.sendTo}
+                key={index}
                 onClick={() => takeConversationCurrentUser(item)}
               >
                 <Box
