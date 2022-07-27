@@ -10,6 +10,15 @@ const HeaderMessage = () => {
     if (conversations.length !== 0) setCurrentChat(conversations[0]);
   }, [setCurrentChat, conversations]);
 
+  if (conversations.length === 0)
+    return (
+      <Box
+        component="header"
+        width="100%"
+        height="65px"
+        bgcolor="secondary.main"
+      ></Box>
+    );
   return (
     <Box
       component="header"
