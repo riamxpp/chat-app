@@ -8,7 +8,7 @@
 - `Funcionalidade 2`: `Themas`: o projeto conta com thema Claro e Escuro, sendo possível mudar com um click.
 - `Funcionalidade 3`: `Enviar`: mensagens, ao enviar mensagens o usuário irá recebe-la instantaneamente. Também foi adicionado scroll automatico ao entrar na conversa ou ao enviar uma nova mensagem, para melhor UX do usuário.
 
-## ✔️ Técnicas e tecnologias utilizadas
+## ✔️ Tecnologias utilizadas
 
 - ``Javascript`` <br>
 <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a>
@@ -33,7 +33,7 @@ Após baixar o projeto, você pode abrir com o `Visual Studio CODE`:
 
 O `Visual Studio Code` deve executar o projeto em seu navegador. 🏆 
 
-## :full_moon: :new_moon: Themas
+## :full_moon: :new_moon: Temas:
 
 <h2>Tema Claro :full_moon: </h2>
 <div>
