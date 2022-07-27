@@ -17,8 +17,7 @@
 - ``Typescript``<br>
 <a href="https://www.typescriptlang.org/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="Typescript" width="40" height="40"/> 
 - ``Firebase``<br>
-</a>
-<a href="https://firebase.google.com/?gclid=Cj0KCQjwxIOXBhCrARIsAL1QFCbnm84Qcmm3XDEp2anwuJGO12pplq7QGkP9DkQh3eDZvDJDxsG4c3IaArJEEALw_wcB&gclsrc=aw.ds" target="_blank"> <img src="https://camo.githubusercontent.com/b60dbebe62aa667888aeb73e44c20f828aa5681cfdb0824730e147564fd7f92c/68747470733a2f2f6d706e672e706e67666c792e636f6d2f32303138303431372f7073652f6b697373706e672d66697265626173652d636c6f75642d6d6573736167696e672d636f6d70757465722d69636f6e732d676f6f676c652d636c6f2d6769746875622d35616435643363653233396362362e383532353233313631353233393632383330313435392e6a7067" alt="Firebase" width="40" height="40"/> 
+</a><a href="https://firebase.google.com/?gclid=Cj0KCQjwxIOXBhCrARIsAL1QFCbnm84Qcmm3XDEp2anwuJGO12pplq7QGkP9DkQh3eDZvDJDxsG4c3IaArJEEALw_wcB&gclsrc=aw.ds" target="_blank"> <img src="https://camo.githubusercontent.com/b60dbebe62aa667888aeb73e44c20f828aa5681cfdb0824730e147564fd7f92c/68747470733a2f2f6d706e672e706e67666c792e636f6d2f32303138303431372f7073652f6b697373706e672d66697265626173652d636c6f75642d6d6573736167696e672d636f6d70757465722d69636f6e732d676f6f676c652d636c6f2d6769746875622d35616435643363653233396362362e383532353233313631353233393632383330313435392e6a7067" alt="Firebase" width="40" height="40"/> 
 
 ## Acesso ao projeto
 
@@ -29,7 +28,7 @@ Você pode [acessar o código fonte do projeto](https://github.com/riamxpp/chat-
 Após baixar o projeto, você pode abrir com o `Visual Studio CODE`:
 
 - Clique com botão direito do mouse na pasta baixada e procure a opção 'Abrir com Code', ao encontrar clique;
-- Ao entrar no visual studio code com a pasta do projeto abra o terminal do code apertando 'crtl + j' e digite o comando 'git install';
-- Quando terminar de instalar as depedências bastar iniciar o projeto com o comando 'npm start'.
+- Ao entrar no visual studio code, se já estiver na pasta do projeto, caso não você pode navegar no terminal utilizando o comando 'cd' e 'cd ..', abra o terminal do code apertando 'crtl + j' e digite o comando 'git install';
+- Quando terminar de instalar as depedências, basta iniciar o projeto com o comando 'npm start'.
 
 O `Visual Studio Code` deve executar o projeto em seu navegador. 🏆 
